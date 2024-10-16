@@ -1,0 +1,4 @@
+Pipfile
+**/build
+/node_modules
+/src/main/dist/

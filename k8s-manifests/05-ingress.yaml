@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: b2l-ingress
+  namespace: demoapp
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: demoapp.k8sdev.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: demoapp-svc
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - demoapp.k8sdev.local
+    secretName: nginx-tls-secret

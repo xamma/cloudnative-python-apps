@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap
+  namespace: back2life
+data:
+  API_PORT: "8000"
+  SECRET_KEY: "R4nd00mSecretStr1ng!"
+  MONGO_HOST: "mongodb.demoapp.svc.cluster.local"
+  MONGO_USER: "admin"
+  MONGO_PORT: "27017"
+  MONGO_DB_NAME: "back2lifedb"
+  MONGO_USERCOLL_NAME: "b2lusercoll"

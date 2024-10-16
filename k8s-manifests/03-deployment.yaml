@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoapp-depl
+  namespace: demoapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demoapp
+  template:
+    metadata:
+      labels: 
+        app: demoapp
+    spec:
+      containers:
+        - name: b2l-app
+          image: ghcr.io/xamma/demoapp:latest
+          envFrom:
+            - configMapRef:
+                name: b2l-configmap
+            - secretRef:
+                name: appcreds
+          ports:
+            - containerPort: 8000
+      imagePullSecrets:
+        - name:  ghcr-secret
+      restartPolicy: Always

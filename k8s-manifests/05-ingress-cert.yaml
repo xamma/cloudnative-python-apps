@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nginx-cert
+  namespace: demoapp
+spec:
+  secretName: nginx-tls-secret
+  issuerRef:
+    name: nginx-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - demoapp.k8sdev.local
